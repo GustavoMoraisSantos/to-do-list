@@ -6,17 +6,26 @@ import { Trash } from "@phosphor-icons/react";
 export interface TaskEntity {
   id: string;
   content: string;
-  isCompleted?: boolean;
+  isCompleted: boolean;
 }
 
 interface TaskProps {
   task: TaskEntity;
   onDeleteTask: (id: string) => void;
+  onStatusChange: (id: string) => void;
 }
 
-export default function Task({ task, onDeleteTask }: TaskProps) {
+export default function Task({
+  task,
+  onDeleteTask,
+  onStatusChange,
+}: TaskProps) {
   function handleDeleteTask() {
     onDeleteTask(task.id);
+  }
+
+  function handleChangeStatus() {
+    onStatusChange(task.id);
   }
 
   return (
@@ -25,9 +34,11 @@ export default function Task({ task, onDeleteTask }: TaskProps) {
         <Checkbox
           color="primary-o"
           className={styles.teste}
+          onChange={handleChangeStatus}
           name="checkbox"
           shape="round"
-        ></Checkbox>
+          checked={task.isCompleted}
+        />
         <label
           className={task?.isCompleted ? styles.taskDone : ""}
           htmlFor="checkbox"

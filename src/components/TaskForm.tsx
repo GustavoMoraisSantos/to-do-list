@@ -15,6 +15,7 @@ export default function TaskForm({ onCreateTask }: Props) {
     const newTask = {
       id: Math.random().toString(16).slice(2),
       content: taskDescription,
+      isCompleted: false,
     };
     onCreateTask(newTask);
     setTaskDescription("");

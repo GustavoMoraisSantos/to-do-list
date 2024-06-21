@@ -16,6 +16,13 @@ function App() {
     const newTaskList = tasks.filter((t) => t.id !== id);
     setTasks(newTaskList);
   }
+  function handleChangeTaskStatus(id: string) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+      )
+    );
+  }
 
   return (
     <>
@@ -26,7 +33,14 @@ function App() {
           <TaskCounter tasks={tasks} />
           {tasks.length > 0 ? (
             tasks.map((task) => {
-              return <Task task={task} onDeleteTask={handleDeleteTask} />;
+              return (
+                <Task
+                  key={task.id}
+                  task={task}
+                  onDeleteTask={handleDeleteTask}
+                  onStatusChange={handleChangeTaskStatus}
+                />
+              );
             })
           ) : (
             <NoContent />
