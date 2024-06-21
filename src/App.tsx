@@ -23,7 +23,7 @@ function App() {
       <main className={styles.mainContent}>
         <div>
           <TaskForm onCreateTask={handleCreateTask} />
-          <TaskCounter />
+          <TaskCounter tasks={tasks} />
           {tasks.length > 0 ? (
             tasks.map((task) => {
               return <Task task={task} onDeleteTask={handleDeleteTask} />;
