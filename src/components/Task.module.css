@@ -1,0 +1,46 @@
+.taskContainer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--gray-500);
+  position: relative;
+}
+
+.taskContent {
+  display: flex;
+  align-items: center;
+}
+
+.taskContent label {
+  margin-left: 1rem;
+  flex-grow: 1;
+}
+
+.taskDone {
+  margin-left: 1rem;
+  flex-grow: 1;
+  text-decoration: line-through;
+}
+
+.taskContent input[type="checkbox"] {
+  border-radius: 100%;
+  border: red;
+  background-color: red;
+  border-width: 0 2px 2px 0;
+}
+
+.taskContent button {
+  line-height: 0;
+  margin-left: 1rem;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.trashIcon:hover {
+  color: var(--danger);
+}

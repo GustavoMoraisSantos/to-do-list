@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.counterTitle {
+  display: flex;
+}
+
+.counterTitle p {
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.counterTitle button {
+  margin-left: 1rem;
+  background: var(--gray-400);
+  font-size: 0.875rem;
+  border-radius: 10px;
+  padding: 0px 8px;
+  box-shadow: none;
+  border: none;
+  color: var(--gray-100);
+}
