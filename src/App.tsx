@@ -2,17 +2,19 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import Header from "./components/Header";
 import NoContent from "./components/NoContent";
-import Task from "./components/Task";
+import Task, { TaskEntity } from "./components/Task";
 import TaskCounter from "./components/TaskCounter";
 import TaskForm from "./components/TaskForm";
 
 function App() {
-  const [tasks, setTasks] = useState<Array<string>>([]);
+  const [tasks, setTasks] = useState<Array<TaskEntity>>([]);
 
-  console.log("tasks", tasks);
-
-  function handleCreateTask(task: string) {
+  function handleCreateTask(task: TaskEntity) {
     setTasks([...tasks, task]);
+  }
+  function handleDeleteTask(id: string) {
+    const newTaskList = tasks.filter((t) => t.id !== id);
+    setTasks(newTaskList);
   }
 
   return (
@@ -24,7 +26,7 @@ function App() {
           <TaskCounter />
           {tasks.length > 0 ? (
             tasks.map((task) => {
-              return <Task content={task} />;
+              return <Task task={task} onDeleteTask={handleDeleteTask} />;
             })
           ) : (
             <NoContent />

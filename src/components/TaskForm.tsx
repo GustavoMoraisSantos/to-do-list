@@ -1,9 +1,10 @@
 import styles from "./TaskForm.module.css";
 import plus from "../assets/plus.svg";
 import { FormEvent, useState } from "react";
+import { TaskEntity } from "./Task";
 
 interface Props {
-  onCreateTask: (taskDescription: string) => void;
+  onCreateTask: (task: TaskEntity) => void;
 }
 
 export default function TaskForm({ onCreateTask }: Props) {
@@ -11,7 +12,11 @@ export default function TaskForm({ onCreateTask }: Props) {
 
   function handleCreateTask(event: FormEvent) {
     event?.preventDefault();
-    onCreateTask(taskDescription);
+    const newTask = {
+      id: Math.random().toString(16).slice(2),
+      content: taskDescription,
+    };
+    onCreateTask(newTask);
     setTaskDescription("");
   }
 
