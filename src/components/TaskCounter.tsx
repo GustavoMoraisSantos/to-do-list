@@ -6,6 +6,8 @@ interface TaskCounterProps {
 }
 
 export default function TaskCounter({ tasks }: TaskCounterProps) {
+  let completedTasks = tasks.filter((task) => task.isCompleted === true);
+
   return (
     <div className={styles.container}>
       <div className={styles.counterTitle}>
@@ -13,7 +15,10 @@ export default function TaskCounter({ tasks }: TaskCounterProps) {
         <button>{tasks.length}</button>
       </div>
       <div className={styles.counterTitle}>
-        <p>Concluídas</p> <button>1 de 4</button>
+        <p>Concluídas</p>{" "}
+        <button>
+          {completedTasks.length} de {tasks.length}
+        </button>
       </div>
     </div>
   );
